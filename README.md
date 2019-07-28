@@ -24,7 +24,7 @@ or
  * or you can export contacts from your phone to xml and import them in the RsNav device.
 
 ----
-##Testing
+## Testing
 * Tested on 8.8 inch RsNav unit, HW 2.0, Android 6.0
 
 
@@ -37,5 +37,5 @@ App do not read/store/send any of the contact details. It just forwards the phon
 
 
 ----
-##Licence
+## Licence
 Refer to [Licence](https://github.com/RaPrPo/CallsToBt/blob/master/licence.md)
