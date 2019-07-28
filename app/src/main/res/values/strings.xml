@@ -4,4 +4,6 @@
     <string name="menu_txt_licence">Licence</string>
     <string name="menu_txt_help">Help</string>
     <string name="switch_redirection_text">Enable calls redirction to Bluetooth</string>
+    <string name="version_dummy">version</string>
+    <string name="menu_txt_github">View on GitHub</string>
 </resources>

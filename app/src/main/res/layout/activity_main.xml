@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,14 +9,25 @@
     android:layout_marginTop="20dip"
     android:layout_marginRight="20dip"
     android:layout_marginBottom="20dip"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <Switch
-        android:id="@+id/switch_enable_redirection"
+        android:id="@+id/id_switch_enable_redirection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/switch_redirection_text"
-        android:textOff="Calls redirection disabled"
-        android:textOn="Calls redirection enabled" />
+        android:theme="@style/AppTheme" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/id_text_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:clickable="false"
+        android:singleLine="true"
+        android:text="@string/version_dummy"
+        android:visibility="visible" />
+
+</RelativeLayout>

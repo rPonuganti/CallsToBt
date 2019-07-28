@@ -87,7 +87,6 @@ public class HexUtils {
         }
     /**
      * Change byte to int
-     * @param source
      * @return
      */
     public static int bytesToInt(byte... bytes){
@@ -102,7 +101,6 @@ public class HexUtils {
     }
     /**
      * Get the value on the first bit
-     * @param value
      * @param position
      * @return
      */

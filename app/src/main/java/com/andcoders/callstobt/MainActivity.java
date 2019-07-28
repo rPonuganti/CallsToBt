@@ -6,14 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rs.core.bluetooth.RsBluetoothManager;
@@ -22,6 +24,7 @@ import com.rs.core.bluetooth.RsBluetoothManager;
 
     private RsBluetoothManager mBtManager = null;
     private final int PERMISSION_REQUEST_RESULT = 0x55;
+    private final String APP_GITHUB_LINK = "https://github.com/RaPrPo/CallsToBt";
 
      Switch mGlobalReditionSwitch;
 
@@ -30,6 +33,7 @@ import com.rs.core.bluetooth.RsBluetoothManager;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /* Request run time permissions */
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_DENIED ||
                 checkSelfPermission(Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_DENIED ||
@@ -43,10 +47,20 @@ import com.rs.core.bluetooth.RsBluetoothManager;
         }
 
         /* Register for State Change of the Switch */
-        mGlobalReditionSwitch = (Switch) findViewById(R.id.switch_enable_redirection);
+        mGlobalReditionSwitch = (Switch) findViewById(R.id.id_switch_enable_redirection);
         mGlobalReditionSwitch.setOnCheckedChangeListener(this);
         mGlobalReditionSwitch.setChecked(Globals.Prefs.getRedirectionEnblDsbl(this));
 
+        /* Set version text */
+         TextView versionTextView = (TextView) findViewById(R.id.id_text_version);
+         try {
+             PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
+             String version = pInfo.versionName;
+             versionTextView.setText("V " + version);
+
+         } catch (PackageManager.NameNotFoundException e) {
+             e.printStackTrace();
+         }
     }
 
      @Override
@@ -57,7 +71,7 @@ import com.rs.core.bluetooth.RsBluetoothManager;
      @Override
      public void onCheckedChanged(CompoundButton compoundButton, boolean switchState) {
          switch (compoundButton.getId()){
-             case R.id.switch_enable_redirection:
+             case R.id.id_switch_enable_redirection:
                  if(switchState)
                  {
                      enableBroadCastReceiver();
@@ -91,14 +105,9 @@ import com.rs.core.bluetooth.RsBluetoothManager;
                  // Toast.makeText(this, "Settings clicekd", Toast.LENGTH_SHORT).show();
              //    return true;
 
-             case R.id.id_menu_help:
-                 //Intent getThanksIntent = new Intent(this, SayThanks.class);
-                 //startActivity(getThanksIntent);
-                 Toast.makeText(this, "Help clicekd", Toast.LENGTH_SHORT).show();
-                 return true;
-
-             case R.id.id_menu_licence:
-                 Toast.makeText(this, "Licence clicekd", Toast.LENGTH_SHORT).show();
+             case R.id.id_menu_github:
+                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(APP_GITHUB_LINK));
+                 startActivity(i);
                  return true;
 
              default:

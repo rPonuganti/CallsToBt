@@ -9,11 +9,7 @@
 -->
 
     <item
-        android:id="@+id/id_menu_help"
+        android:id="@+id/id_menu_github"
         android:checkable="false"
-        android:title="@string/menu_txt_help" />
-    <item
-        android:id="@+id/id_menu_licence"
-        android:checkable="false"
-        android:title="@string/menu_txt_licence" />
+        android:title="@string/menu_txt_github" />
 </menu>
