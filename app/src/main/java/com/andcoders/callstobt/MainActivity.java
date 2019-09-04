@@ -37,7 +37,9 @@ import com.rs.core.bluetooth.RsBluetoothManager;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_DENIED ||
                 checkSelfPermission(Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_DENIED ||
-                checkSelfPermission(Manifest.permission.PROCESS_OUTGOING_CALLS) == PackageManager.PERMISSION_DENIED)
+                checkSelfPermission(Manifest.permission.PROCESS_OUTGOING_CALLS) == PackageManager.PERMISSION_DENIED ||
+                checkSelfPermission(Manifest.permission.WRITE_CALL_LOG) == PackageManager.PERMISSION_DENIED
+            )
             {
                 String[] permissions = {Manifest.permission.READ_PHONE_STATE,
                                         Manifest.permission.CALL_PHONE,
@@ -61,6 +63,10 @@ import com.rs.core.bluetooth.RsBluetoothManager;
          } catch (PackageManager.NameNotFoundException e) {
              e.printStackTrace();
          }
+
+         // For testing
+         //CallLogUpdater mCallLogUpdater = new CallLogUpdater(this);
+         //mCallLogUpdater.updateCallLog("+919894311381");
     }
 
      @Override

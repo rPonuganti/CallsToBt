@@ -4,11 +4,11 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.andcoders.callstobt"
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName '1.5'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         minSdkVersion 23
-        targetSdkVersion 23
+        targetSdkVersion 24
     }
     buildTypes {
         release {
